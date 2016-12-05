@@ -444,30 +444,13 @@ public class Game : MonoBehaviour {
 	/// </summary>
 	private	void UpdatePrioText() {
 
-		//お互い何枚ずつあるか
-		int	numA	= 0;
-		int	numB	= 0;
-
 		//更新処理
 		int	i, j;
 		for( i=0; i<fieldGridMaxX; i++) {
 			for( j=0; j<fieldGridMaxY; j++) {
 				//優先度の文字を更新
 				gridDataArray[ i][ j].grid.SetPrio( gridDataArray[ i][ j].prio);
-
-				//お互い何枚ずつ持っているか
-				if( PieceKind.SideA==gridDataArray[ i][ j].pieceKind) {
-					numA++;
-				} else
-				if( PieceKind.SideB==gridDataArray[ i][ j].pieceKind) {
-					numB++;
-				}
 			}
-		}
-
-		//何枚ずつあるか通知
-		if( null!=scoreUI) {
-			scoreUI.SetScore( numA, numB);
 		}
 	}
 
@@ -479,15 +462,32 @@ public class Game : MonoBehaviour {
 		//駒を置く
 		CheckPiece( x, y, true);
 
+		//お互い何枚ずつあるか
+		int	numA	= 0;
+		int	numB	= 0;
+
 		int	i, j;
 		for( i=0; i<fieldGridMaxX; i++) {
 			for( j=0; j<fieldGridMaxY; j++) {
 				//表示全部消す
 				gridDataArray[ i][ j].grid.SetPlate( false);
+
+				//お互い何枚ずつ持っているか
+				if( PieceKind.SideA==gridDataArray[ i][ j].pieceKind) {
+					numA++;
+				} else
+				if( PieceKind.SideB==gridDataArray[ i][ j].pieceKind) {
+					numB++;
+				}
 			}
 		}
 		//置いた場所を光らせる
 		gridDataArray[ x][ y].grid.SetPlate( true);
+
+		//何枚ずつあるかUIに通知
+		if( null!=scoreUI) {
+			scoreUI.SetScore( numA, numB);
+		}
 	}
 
 
