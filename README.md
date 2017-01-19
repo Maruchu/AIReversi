@@ -1,6 +1,8 @@
 # AIReversi
 優先度テーブル型AIリバーシ<br>
 
+<img src="http://many.chu.jp/Unity/AIReversi/Sample1.gif" alt="AI対戦" width="256px"> <img src="http://many.chu.jp/Unity/AIReversi/Sample2.gif" alt="AI対戦" width="256px">
+
 Copyright(C)[Maruchu](http://maruchu.nobody.jp/ "Maruchu") 2016
 
 
